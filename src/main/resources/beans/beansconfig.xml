@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--使用p标签来注入属性-->
+
+    <!--配置注入Bean对象 -->
+    <bean id="personInfo" class="com.springfive.impl.PersonInfo">
+    </bean>
+    <!--HomeInfo 手动设置了有两个参数的构造函数，所以需要设置参数-->
+    <bean id="homeInfo" class="com.testproject.entity.HomeInfo">
+        <constructor-arg name="homeAdress" value="霍营"/>
+        <constructor-arg name="homeName" value="13号楼"/>
+    </bean>
+    <!--输入属性值。开始会直接执行实体的默认无参构造函数来初始化对象-->
+    <bean id="studentEntity" class="com.testproject.entity.StudentEntity">
+        <property name="studentAge" value="18"/>
+        <property name="studentName" value="zl"/>
+        <property name="studentScore" value="100"/>
+    </bean>
+    <!--使用p标签来注入属性-->
+    <bean id="studentEt" class="com.testproject.entity.StudentEntity" p:studentName="lzl" p:studentAge="18"></bean>
+    <!--扫描被注解的Beans,这样不用配置bean了,直接在bean上添加注解-->
+    <!--注解包括@Service ,@Component、@Repository、@Controller-->
+    <context:component-scan base-package="com.springfive.impl"/>
+
+    <!--在bean中注入外部的bean， 根据ref。还有属性-->
+    <bean id="testPersonInfoService" class="com.springfive.service.TestPersonInfoService">
+        <property name="personInfo" ref="personInfoImpl"></property>
+    </bean>
+    <bean id="personInfoImpl" class="com.springfive.impl.PersonInfoImpl"></bean>
+
+    <!--在bean中注入内部bean对象-->
+</beans>
