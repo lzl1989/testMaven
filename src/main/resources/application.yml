@@ -1,0 +1,40 @@
+#spring boot 默认读取application 或者 bootstrap 配置文件
+
+#启动哪个配置文件
+spring:
+  profiles:
+    active: dev
+#配置服务端口和地址
+server:
+  port: 8082
+  servlet:
+    context-path: /testMaven
+
+
+############################## mybatis-plus配置 开始  ##############################
+mybatis-plus:
+#  mapper-locations: classpath*:com.testproject.dao.mapping/*.xml
+# 一定要注意格式。上面的格式无效
+  mapper-locations: classpath*:com/**/mapping/*.xml
+  type-aliases-package: com.testproject.entity
+#  typeEnumsPackage: com.testproject.enum
+  global-config:
+    id-type: 3                                              # 0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    db-column-underline: false
+    refresh-mapper: true
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: false
+    cache-enabled: true                                     # 配置的缓存的全局开关
+    lazyLoadingEnabled: true                                # 延时加载的开关
+    multipleResultSetsEnabled: true                 # 开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    jdbc-type-for-null: 'null'                             #Oracle数据库开启，否则使用updateAllColumnById()这种方法，如果列值为空，就会报错
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   # 打印sql语句,调试用
+############################## mybatis-plus配置 结束  ##############################
+
+
+
+
+

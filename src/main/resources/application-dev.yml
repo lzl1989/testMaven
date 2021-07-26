@@ -1,0 +1,22 @@
+#定义一个实体
+testuser:
+  name: lzl-dev
+  age: 32-dev
+  address: huoyingTrainSet-dev
+
+#定位日志配置文件logback-spring.xml
+logging:
+  config: classpath:log/logback-spring.xml
+
+
+#配置mysql
+spring:
+    datasource:
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
