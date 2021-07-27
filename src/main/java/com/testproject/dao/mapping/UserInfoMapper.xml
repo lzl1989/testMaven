@@ -2,9 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.testproject.dao.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.testproject.entity.UserInfo">
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
+        <result column="havemoney" jdbcType="DECIMAL" property="havemoney"/>
+    </resultMap>
 
-  <insert id="InsertUser">
-     INSERT into testtype(type) VALUES('123')
+    <insert id="InsertUser">
+     INSERT into testtype(type,name,age,havemoney) VALUES('123','lzl','12','12.34')
   </insert>
 
+    <select id="selectUserById" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT count(*) from testtype t
+        <where>
+            t.id=1
+            <if test="userId!=null">
+                and t.age=#{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="SelectListUserByUserId" parameterMap="com.testproject.entity.UserInfoCustom"
+            resultMap="BaseResultMap">
+      SELECT * from testtype t
+      <where>
+          <if test="name!=null">
+              t.name=#{name}
+          </if>
+          <if test="age!=null">
+              and t.age=#{age}
+          </if>
+      </where>
+    </select>
 </mapper>

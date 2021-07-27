@@ -16,6 +16,7 @@ mybatis-plus:
 #  mapper-locations: classpath*:com.testproject.dao.mapping/*.xml
 # 一定要注意格式。上面的格式无效
   mapper-locations: classpath*:com/**/mapping/*.xml
+#  我建立的实体不能在其他地方建立。
   type-aliases-package: com.testproject.entity
 #  typeEnumsPackage: com.testproject.enum
   global-config:

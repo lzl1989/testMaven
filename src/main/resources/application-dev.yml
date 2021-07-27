@@ -6,7 +6,7 @@ testuser:
 
 #定位日志配置文件logback-spring.xml
 logging:
-  config: classpath:log/logback-spring.xml
+  config: classpath:logback-spring.xml
 
 
 #配置mysql

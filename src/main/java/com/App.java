@@ -4,13 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableAsync;
+
+
+
 
 @SpringBootApplication
 @Slf4j
 //开始定时器
 //@EnableScheduling
-@EnableAsync
+//@EnableAsync
 /**
  *  Mapper扫包，也可以在每个mapper类上加上mapper注解
  */

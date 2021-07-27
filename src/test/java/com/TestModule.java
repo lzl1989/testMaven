@@ -1,6 +1,8 @@
 package com;
 
+import com.testproject.entity.UserInfoCustom;
 import com.testproject.service.IPersonService;
+import com.testproject.service.IUserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +29,9 @@ public class TestModule {
 
     @Autowired
     IPersonService iPersonService;
+
+    @Autowired
+    IUserInfoService iUserInfoService;
     /**
      * 1.通过配置文件中配置的bean
      * 获取bean对象。然后调用对象方法
@@ -48,6 +53,9 @@ public class TestModule {
 //        StudentEntity studentEntity= applicationContext1.getBean("studentEntity",StudentEntity.class);
 
         //4.
-       iPersonService.UserBuilder();
+//       iPersonService.UserBuilder();
+//          iUserInfoService.selectUserById("22");
+        UserInfoCustom userInfoCustom=UserInfoCustom.builder().name("lzl").build();
+        iUserInfoService.SelectListUserByUserId(userInfoCustom);
     }
 }
