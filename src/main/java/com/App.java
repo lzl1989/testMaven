@@ -6,9 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-
-
 @SpringBootApplication
+//@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 @Slf4j
 //开始定时器
 //@EnableScheduling

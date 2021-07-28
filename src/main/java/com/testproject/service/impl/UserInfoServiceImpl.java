@@ -1,6 +1,5 @@
 package com.testproject.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.testproject.dao.UserInfoMapper;
 import com.testproject.entity.UserInfo;
 import com.testproject.entity.UserInfoCustom;
@@ -14,7 +13,7 @@ import java.util.List;
 //extends ServiceImpl<UserInfoMapper,UserInfo>
 @Service
 @Slf4j
-public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> implements IUserInfoService {
+public class UserInfoServiceImpl  implements IUserInfoService {
 
 
     /**
