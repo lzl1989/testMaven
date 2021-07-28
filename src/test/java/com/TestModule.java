@@ -1,6 +1,6 @@
 package com;
 
-import com.testproject.entity.UserInfoCustom;
+import com.testproject.entity.EntityA;
 import com.testproject.service.IPersonService;
 import com.testproject.service.IUserInfoService;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +9,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 /**
@@ -55,7 +58,11 @@ public class TestModule {
         //4.
 //       iPersonService.UserBuilder();
 //          iUserInfoService.selectUserById("22");
-        UserInfoCustom userInfoCustom=UserInfoCustom.builder().name("lzl").build();
-        iUserInfoService.SelectListUserByUserId(userInfoCustom);
+//        UserInfoCustom userInfoCustom=UserInfoCustom.builder().name("lzl").build();
+//        iUserInfoService.SelectListUserByUserId(userInfoCustom);
+        List<EntityA> list=new ArrayList<>();
+        list.add(EntityA.builder().Code("001").Name("lzl").build());
+        iUserInfoService.ListEntityAConvertEntityB(list);
+
     }
 }
