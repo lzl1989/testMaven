@@ -24,8 +24,7 @@
         </where>
     </select>
 
-    <select id="SelectListUserByUserId" parameterMap="com.testproject.entity.UserInfoCustom"
-            resultMap="BaseResultMap">
+    <select id="SelectListUserByUserId" parameterType="com.testproject.entity.UserInfoCustom"  resultMap="BaseResultMap">
       SELECT * from testtype t
       <where>
           <if test="name!=null">
