@@ -1,14 +1,17 @@
 package com;
 
-import com.testproject.service.IPersonService;
-import com.testproject.service.ITeacher;
-import com.testproject.service.IUserInfoService;
+import com.testproject.service.*;
+import com.testproject.service.impl.DynamicProxy;
+import com.testproject.service.impl.StudentPersonA;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
 
 @RunWith(SpringRunner.class)
 /**
@@ -57,19 +60,29 @@ public class TestModule {
 //        StudentEntity studentEntity= applicationContext1.getBean("studentEntity",StudentEntity.class);
 
         //4.
-//       iPersonService.UserBuilder();
-//          iUserInfoService.selectUserById("22");
+//        iPersonService.UserBuilder();
+//        iUserInfoService.selectUserById("22");
 //        UserInfoCustom userInfoCustom=UserInfoCustom.builder().name("lzl").build();
 //        iUserInfoService.SelectListUserByUserId(userInfoCustom);
 //        List<EntityA> list=new ArrayList<>();
 //        list.add(EntityA.builder().Code("001").Name("lzl").build());
 //        list.add(EntityA.builder().Code("002").Name("zhy").build());
 //        iUserInfoService.ListEntityAConvertEntityB(list);
-        try {
-            iTeacher.requestQuestion();
-        } catch (Exception ex) {
-
-        }
+          //回调函数
+//        try {
+//            iTeacher.requestQuestion();
+//        } catch (Exception ex) {
+//
+//        }
+        //静态代理的方式调用
+//        IStudentPerson iStudentPerson=new StudentPersonA("刘宗林");
+//        IStudentPerson iStudentPersonProxy=new StudentProxy((StudentPersonA) iStudentPerson);
+//        iStudentPersonProxy.giveMoneyToSchool();
+        //动态代理的方式执行
+        IStudentPerson student=new StudentPersonA("刘阿林");
+        InvocationHandler invocationHandler=new DynamicProxy<IStudentPerson>(student);
+        IStudentPerson studentPerson=(IStudentPerson)Proxy.newProxyInstance(IStudentPerson.class.getClassLoader(),new Class[]{IStudentPerson.class},invocationHandler);
+//        studentPerson.giveMoneyToSchool();
 
     }
 }

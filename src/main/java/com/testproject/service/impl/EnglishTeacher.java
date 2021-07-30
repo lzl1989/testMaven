@@ -22,7 +22,7 @@ public class EnglishTeacher implements ITeacherCallBack,ITeacher {
      */
     @Override
     public void teacherCallBack(StudentEntity studentEntity, String message) {
-         log.info("老师得到的回答是:"+ studentEntity.getStudentName()+"同学的答案是:"+message);
+         log.info("老师得到的回答是:"+ studentEntity.getStudentName()+"同学通过回调函数返回的的答案是:"+message);
     }
 
     /**
