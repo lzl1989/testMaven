@@ -1,7 +1,7 @@
 package com;
 
-import com.testproject.entity.EntityA;
 import com.testproject.service.IPersonService;
+import com.testproject.service.ITeacher;
 import com.testproject.service.IUserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -9,9 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 /**
@@ -32,18 +29,22 @@ public class TestModule {
 
     @Autowired
     IPersonService iPersonService;
-
     @Autowired
     IUserInfoService iUserInfoService;
+//    @Autowired
+//    IStudent iStudent;
+    @Autowired
+    ITeacher iTeacher;
+
     /**
      * 1.通过配置文件中配置的bean
      * 获取bean对象。然后调用对象方法
      * 这是一种配置Bean的方法
-     *
+     * <p>
      * 2.通过注解的方式获取Bean
      */
     @Test
-    public void  testModule(){
+    public void testModule() {
         //1.
 //        ApplicationContext applicationContext= new ClassPathXmlApplicationContext("beans/beansconfig.xml");
 //        PersonInfo personInfo = applicationContext.getBean("personInfo", PersonInfo.class);
@@ -60,9 +61,15 @@ public class TestModule {
 //          iUserInfoService.selectUserById("22");
 //        UserInfoCustom userInfoCustom=UserInfoCustom.builder().name("lzl").build();
 //        iUserInfoService.SelectListUserByUserId(userInfoCustom);
-        List<EntityA> list=new ArrayList<>();
-        list.add(EntityA.builder().Code("001").Name("lzl").build());
-        iUserInfoService.ListEntityAConvertEntityB(list);
+//        List<EntityA> list=new ArrayList<>();
+//        list.add(EntityA.builder().Code("001").Name("lzl").build());
+//        list.add(EntityA.builder().Code("002").Name("zhy").build());
+//        iUserInfoService.ListEntityAConvertEntityB(list);
+        try {
+            iTeacher.requestQuestion();
+        } catch (Exception ex) {
+
+        }
 
     }
 }

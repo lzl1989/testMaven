@@ -36,4 +36,9 @@ public interface IUserInfoService  {
      */
     List<EntityB> ListEntityAConvertEntityB(List<EntityA> entityAList);
 
+    /**
+     * 函数式编程的操作问题
+     */
+    void CodeFunctionInterface();
+
 }

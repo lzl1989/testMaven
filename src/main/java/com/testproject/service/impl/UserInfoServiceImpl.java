@@ -56,14 +56,27 @@ public class UserInfoServiceImpl implements IUserInfoService {
 
         //转换实体
         List<EntityB> entityBList;
-        entityBList = entityAList.stream().map(x ->
-                EntityB.builder().CodeShort(x.getCode())
-                        .NameShort(x.getName()).build()
+        entityBList = entityAList.stream().map (x ->
+           EntityB.builder().CodeShort(x.getCode())
+                    .NameShort(x.getName()).build()
         ).collect(Collectors.toList());
         log.info("输出集合数据：" + entityBList.toString());
         //筛选结果
-        List list= entityAList.stream().filter(x->x.getName().equals("zl")).collect(Collectors.toList());
+        List list= entityAList.stream().filter(x->x.getName().equals("lzl")).collect(Collectors.toList());
         log.info("筛选出的结果:"+list.toString());
+        /**
+         *
+         *查看源码
+         */
+        for (EntityA a : entityAList) {
+            EntityA entityA = entityAList.stream().findAny().get();
+            log.info("findAny输出的数据:"+entityAList.indexOf(a) + entityA.toString());
+        }
         return entityBList;
+    }
+
+    @Override
+    public void CodeFunctionInterface() {
+
     }
 }
