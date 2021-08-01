@@ -87,6 +87,7 @@ public class TestModule {
         IStudentPerson studentPerson=(IStudentPerson)Proxy.newProxyInstance(IStudentPerson.class.getClassLoader(),student.getClass().getInterfaces(),invocationHandler);
         //执行方法
         studentPerson.giveMoneyToSchool();
+        studentPerson.gitTheReport("张晓飞");
 
     }
 }

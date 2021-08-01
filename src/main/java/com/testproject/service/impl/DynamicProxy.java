@@ -8,13 +8,15 @@ import java.lang.reflect.Method;
 
 /**
  * 动态代理类
+ * 在java的java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口
+ * 通过这个类和这个人接口能实现动态代理
  */
 @Slf4j
 public class DynamicProxy<T> implements InvocationHandler {
 
 
     /**
-     * 代理的对象
+     * 代理的对象(泛型)
      */
     private T traget;
 
