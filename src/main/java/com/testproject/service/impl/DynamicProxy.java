@@ -10,13 +10,16 @@ import java.lang.reflect.Method;
  * 动态代理类
  */
 @Slf4j
-public class DynamicProxy<T>  implements InvocationHandler {
+public class DynamicProxy<T> implements InvocationHandler {
 
 
+    /**
+     * 代理的对象
+     */
     private T traget;
 
-    public DynamicProxy(T t){
-        this.traget=t;
+    public DynamicProxy(T t) {
+        this.traget = t;
     }
 
 
@@ -25,8 +28,8 @@ public class DynamicProxy<T>  implements InvocationHandler {
 
         log.info("代理执行的方法是:"+method.getName());
         MonitorUtil.start();
-        Object object=method.invoke(proxy,args);
+        Object object = method.invoke(traget, args);
         MonitorUtil.finish(method.getName());
-        return  object;
+        return object;
     }
 }

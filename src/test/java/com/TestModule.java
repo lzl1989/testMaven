@@ -74,15 +74,19 @@ public class TestModule {
 //        } catch (Exception ex) {
 //
 //        }
-        //静态代理的方式调用
+        //【静态代理的方式调用】
 //        IStudentPerson iStudentPerson=new StudentPersonA("刘宗林");
 //        IStudentPerson iStudentPersonProxy=new StudentProxy((StudentPersonA) iStudentPerson);
 //        iStudentPersonProxy.giveMoneyToSchool();
-        //动态代理的方式执行
+        //【动态代理的方式执行】
+        //创建一个实例。 这个实例就是被代理的对象
         IStudentPerson student=new StudentPersonA("刘阿林");
-        InvocationHandler invocationHandler=new DynamicProxy<IStudentPerson>(student);
-        IStudentPerson studentPerson=(IStudentPerson)Proxy.newProxyInstance(IStudentPerson.class.getClassLoader(),new Class[]{IStudentPerson.class},invocationHandler);
-//        studentPerson.giveMoneyToSchool();
+        //创建一个与代理对象相关的InvocationHandler
+        InvocationHandler invocationHandler=new DynamicProxy<>(student);
+        //创建一个代理对象。来代理student的。代理对象的每个方法都会再invoke方法中执行。
+        IStudentPerson studentPerson=(IStudentPerson)Proxy.newProxyInstance(IStudentPerson.class.getClassLoader(),student.getClass().getInterfaces(),invocationHandler);
+        //执行方法
+        studentPerson.giveMoneyToSchool();
 
     }
 }

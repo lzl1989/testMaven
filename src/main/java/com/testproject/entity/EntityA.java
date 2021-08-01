@@ -9,4 +9,5 @@ public class EntityA {
 
     private String Name;
     private String Code;
+    private String Age;
 }
