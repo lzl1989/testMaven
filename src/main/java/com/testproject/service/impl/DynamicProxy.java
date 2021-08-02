@@ -16,7 +16,7 @@ public class DynamicProxy<T> implements InvocationHandler {
 
 
     /**
-     * 代理的对象(泛型)
+     * 代理的对象(泛型) 你好
      */
     private T traget;
 
