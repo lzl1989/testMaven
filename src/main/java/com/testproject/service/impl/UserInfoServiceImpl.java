@@ -55,12 +55,12 @@ public class UserInfoServiceImpl implements IUserInfoService {
     public List<EntityB> ListEntityAConvertEntityB(List<EntityA> entityAList) {
 
         //转换实体
-        List<EntityB> entityBList;
-        entityBList = entityAList.stream().map (x ->
-           EntityB.builder().CodeShort(x.getCode())
-                    .NameShort(x.getName()).build()
-        ).collect(Collectors.toList());
-        log.info("输出集合数据：" + entityBList.toString());
+//        List<EntityB> entityBList;
+//        entityBList = entityAList.stream().map (x ->
+//           EntityB.builder().CodeShort(x.getCode())
+//                    .NameShort(x.getName()).build()
+//        ).collect(Collectors.toList());
+//        log.info("输出集合数据：" + entityBList.toString());
         //筛选结果
         List list= entityAList.stream().filter(x->x.getName().equals("lzl")).collect(Collectors.toList());
         log.info("筛选出的结果:"+list.toString());
@@ -72,11 +72,21 @@ public class UserInfoServiceImpl implements IUserInfoService {
             EntityA entityA = entityAList.stream().findAny().get();
             log.info("findAny输出的数据:"+entityAList.indexOf(a) + entityA.toString());
         }
-        return entityBList;
+        return null;
     }
 
     @Override
     public void CodeFunctionInterface() {
+
+    }
+
+    @Override
+    public void testAssertUtil() {
+
+        assert true;
+        log.info("断言开始执行...");
+        assert false;
+        log.info("断言为false,开始执行...");
 
     }
 }

@@ -1,17 +1,15 @@
 package com;
 
-import com.testproject.service.*;
-import com.testproject.service.impl.DynamicProxy;
-import com.testproject.service.impl.StudentPersonA;
+import com.testproject.service.IPersonService;
+import com.testproject.service.ITeacher;
+import com.testproject.service.IUserInfoService;
+import com.testproject.util.AssertUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
 
 @RunWith(SpringRunner.class)
 /**
@@ -80,14 +78,16 @@ public class TestModule {
 //        iStudentPersonProxy.giveMoneyToSchool();
         //【动态代理的方式执行】
         //创建一个实例。 这个实例就是被代理的对象
-        IStudentPerson student=new StudentPersonA("刘阿林");
-        //创建一个与代理对象相关的InvocationHandler
-        InvocationHandler invocationHandler=new DynamicProxy<>(student);
-        //创建一个代理对象。来代理student的。代理对象的每个方法都会再invoke方法中执行。
-        IStudentPerson studentPerson=(IStudentPerson)Proxy.newProxyInstance(IStudentPerson.class.getClassLoader(),student.getClass().getInterfaces(),invocationHandler);
-        //执行方法
-        studentPerson.giveMoneyToSchool();
-        studentPerson.gitTheReport("张晓飞");
+//        IStudentPerson student=new StudentPersonA("刘阿林");
+//        //创建一个与代理对象相关的InvocationHandler
+//        InvocationHandler invocationHandler=new DynamicProxy<>(student);
+//        //创建一个代理对象。来代理student的。代理对象的每个方法都会再invoke方法中执行。
+//        IStudentPerson studentPerson=(IStudentPerson)Proxy.newProxyInstance(IStudentPerson.class.getClassLoader(),student.getClass().getInterfaces(),invocationHandler);
+//        //执行方法
+//        studentPerson.giveMoneyToSchool();
+//        studentPerson.gitTheReport("张晓飞");
+//        iUserInfoService.testAssertUtil();
+        AssertUtil.assertTrue(false,102,"值为false");
 
     }
 }

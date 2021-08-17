@@ -41,4 +41,9 @@ public interface IUserInfoService  {
      */
     void CodeFunctionInterface();
 
+    /**
+     * 测试断言工具的用法
+     */
+    void  testAssertUtil();
+
 }
