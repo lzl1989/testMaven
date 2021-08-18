@@ -3,7 +3,6 @@ package com;
 import com.testproject.service.IPersonService;
 import com.testproject.service.ITeacher;
 import com.testproject.service.IUserInfoService;
-import com.testproject.util.AssertUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -87,7 +86,7 @@ public class TestModule {
 //        studentPerson.giveMoneyToSchool();
 //        studentPerson.gitTheReport("张晓飞");
 //        iUserInfoService.testAssertUtil();
-        AssertUtil.assertTrue(false,102,"值为false");
-
+//        AssertUtil.assertTrue(false,102,"值为false");
+        iPersonService.testFastJson();
     }
 }

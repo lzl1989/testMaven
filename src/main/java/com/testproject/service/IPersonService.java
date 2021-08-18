@@ -4,4 +4,6 @@ public interface IPersonService {
     void InsertPerson();
 
     void UserBuilder();
+
+    void testFastJson();
 }
