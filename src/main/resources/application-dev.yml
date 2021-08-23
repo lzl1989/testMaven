@@ -19,4 +19,19 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
 
 
+#配置RabbitMQ
+    rabbitmq:
+      host: 127.0.0.1
+#      访问的端口号好好看看，15672是后台的访问端口。5672才是服务端口号
+      port: 5672
+      username: root
+      password: root
+      connection-timeout: 60s
+      listener:
+        direct:
+          acknowledge-mode: none
+      virtual-host: lzlHost
+
+
+
 
