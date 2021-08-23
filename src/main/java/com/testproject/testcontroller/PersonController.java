@@ -1,9 +1,11 @@
 package com.testproject.testcontroller;
 
 import com.testproject.common.ApiResponse;
+import com.testproject.common.ApiResultCode;
 import com.testproject.entity.EntityB;
 import com.testproject.entityreq.AssertInfoReq;
 import com.testproject.service.IPersonService;
+import com.testproject.util.AssertUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,10 +46,21 @@ public class PersonController {
         entityB.setCodeShort("01");
         entityB.setCreateTime(new Date());
         entityB.setShortTime(new Date());
-        ApiResponse apiResponse= ApiResponse.builder().build();
+        ApiResponse apiResponse= new ApiResponse();
         apiResponse.setData(entityB);
         apiResponse.setMsg("success");
         return  apiResponse;
 
+    }
+
+    /**
+     * 测试断言工具类的返回值
+     * @return
+     */
+    @RequestMapping(value = "/getAssertResult")
+    public ApiResponse getAssertResult(){
+        Integer integer=100;
+        AssertUtil.assertTrue(integer>150,ApiResultCode.NO_DATA,"没有数据");
+        return new ApiResponse(200,"success","");
     }
 }
