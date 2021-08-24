@@ -3,7 +3,6 @@ package com.testproject.testcontroller;
 
 import com.testproject.common.ApiResponse;
 import com.testproject.rabbitmq.Productor;
-import com.testproject.rabbitmq.RabbitMqOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,17 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class RabbitMQController {
 
-    @Autowired
-    private RabbitMqOperator rabbitMqOperator;
 
     @Autowired
     private Productor productor;
 
 
+    /**
+     * 测试发送MQ消息
+     * @return
+     */
     @RequestMapping("/testRabbitMqMessage")
     public ApiResponse testRabbitMqMessage() {
-//        rabbitMqOperator.firstQueue();
+        log.info("******************开始发送MQ消息*****************");
         productor.sendData();
+        log.info("******************结束发送MQ消息*****************");
         return new ApiResponse(200, "success");
     }
 

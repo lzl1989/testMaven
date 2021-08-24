@@ -2,7 +2,6 @@ package com.testproject.rabbitmq;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Queue;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -22,7 +21,7 @@ public class RabbitMqOperator {
      *
      * @param data
      */
-    public void push(String routingKey, byte[] data) {
+    public void pushByte(String routingKey, byte[] data) {
         amqpTemplate.convertAndSend(routingKey, data);
     }
 
@@ -33,6 +32,16 @@ public class RabbitMqOperator {
      * @param data
      */
     public void pushInt(String routingKey, int data) {
+        amqpTemplate.convertAndSend(routingKey, data);
+    }
+
+    /**
+     * 步发送Object类型消息到rabbitmq
+     *
+     * @param routingKey
+     * @param data
+     */
+    public void pushObject(String routingKey, Object data) {
         amqpTemplate.convertAndSend(routingKey, data);
     }
 
@@ -54,5 +63,10 @@ public class RabbitMqOperator {
     @Bean
     public Queue secondQueue() {
         return new Queue("second_queue");
+    }
+
+    @Bean
+    public Queue thirdQueuq() {
+        return new Queue("third_queue");
     }
 }
