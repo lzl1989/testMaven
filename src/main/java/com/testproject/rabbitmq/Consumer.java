@@ -53,4 +53,6 @@ public class Consumer {
               log.info("第三个监听 接收到的消息:{}",entityMQ);
           }
     }
+
+
 }
